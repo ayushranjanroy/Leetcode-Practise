@@ -4,10 +4,17 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+ 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        if root is None:
-            return []
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
-        
+        ans = []
+        self.solve(root,ans)
+        return ans
+    
+    def solve(self, root: Optional[TreeNode],ans:List[int]) ->List[int]:
+        if root is not None:
+            self.solve(root.left,ans)
+            ans.append(root.val)
+            self.solve(root.right,ans)
+
         
